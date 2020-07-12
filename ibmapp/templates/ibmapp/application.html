@@ -1,0 +1,208 @@
+
+
+{% extends "ibmapp/app_login.html" %}
+
+{% block content %}
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+              <div class="col-lg-12 justify-content-center">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Fill the Form</h1>
+                  </div>
+                  <form class="user" method="post" action="apply">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control " name="email" placeholder="Enter mail id..." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control " name="experiance" placeholder="experiance..." required>
+                    </div> 
+                    <div class="form-group">
+                        <input type="number" min='0' class="form-control " name="percentage_PG" placeholder="Enter PG %..." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min='0' class="form-control " name="percentage_UG" placeholder="Enter UG %..." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min='0' class="form-control " name="percentage_12th" placeholder="Enter 12th %..." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min='0' class="form-control " name="percentage_10th" placeholder="Enter 10th %..." required>
+                    </div>
+                    <label for="analytics_tools">analytics_tools</label>
+                    <select id="analytics_tools" name="analytics_tools" multiple>
+                        <option name='PowerBi' value="PowerBi">PowerBi</option>
+                        <option name='Tableau' value="Tableau">Tableau</option>
+                        <option name='Microsoft Excel' value="Microsoft Excel">Microsoft Excel</option>
+                        <option name='Plotly' value="Plotly">Plotly</option>
+                        <option name='Dash' value="Dash">Dash</option>
+                    </select>
+                    <br/>
+                    
+                    <label for="SQL">SQL</label>
+                    <select id="SQL" name="SQL" multiple>
+                        <option name='MySQL' value="MySQL">MySQL</option>
+                        <option name='Oracle' value="Oracle">Oracle</option>
+                        <option name='Microsoft SQlServer' value="Microsoft SQlServer">Microsoft SQlServer</option>
+                        <option name='Postgresql' value="Postgresql">Postgresql</option>
+                        <option name='CouchDb' value="CouchDb">CouchDb</option>
+                    </select>
+                    <br/>
+
+                    <label for="No_SQL">No_SQL</label>
+                    <select id="No_SQL" name="No_SQL" multiple>
+                        <option name='MongoDb' value="MongoDb">MongoDb</option>
+                        <option name='Redis' value="Redis">Redis</option>
+                        <option name='Casandra' value="Casandra">Casandra</option>
+                    </select>
+                    <br/>
+                    
+                    <label for="Languages">Languages</label>
+                    <select id="Languages" name="Languages" multiple>
+                        <option name='Python' value="Python">Python</option>
+                        <option name='R' value="R">R</option>
+                        <option name='Java' value="Java">Java</option>
+                        <option name='Julia' value="Julia">Julia</option>
+                        <option name='Scala' value="Scala">Scala</option>
+                    </select>
+                    <br/>
+                   
+                    <label for="Big_Data_Ecosystem">Big_Data_Ecosystem</label>
+                    <select id="Big_Data_Ecosystem" name="Big_Data_Ecosystem" multiple>
+                        <option name='Apache_Hadoop' value="Apache_Hadoop">Apache_Hadoop</option>
+                        <option name='Apache_Spark' value="Apache_Spark">Apache_Spark</option>
+                        <option name='Apache_storm' value="Apache_storm">Apache_storm</option>
+                        <option name='ceph' value="ceph">ceph</option>
+                        <option name='Hydra' value="Hydra">Hydra</option>
+                    </select>
+                    <br/>
+                   
+                  
+                    <button name="login_btn" type="submit" class="btn btn-primary btn-user btn-block">Submit</button><br><br>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/static/ibmapp/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/ibmapp/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/s   tatic/ibmapp/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/static/ibmapp/js/sb-admin-2.min.js"></script>
+  <script src="/static/ibmapp/multiselect/scripts/multiselect.js"></script>
+  <script src="/static/ibmapp/multiselect/scripts/helper.js"></script>
+
+
+<script>
+	document.multiselect('#analytics_tools')
+		.setCheckBoxClick("checkboxAll", function(target, args) {
+			console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+		})
+		.setCheckBoxClick("1", function(target, args) {
+			console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+		});
+
+	function enable() {
+		document.multiselect('#analytics_tools').setIsEnabled(true);
+	}
+
+	function disable() {
+		document.multiselect('#analytics_tools').setIsEnabled(false);
+	}
+</script>
+
+<script>
+	document.multiselect('#SQL')
+		.setCheckBoxClick("checkboxAll", function(target, args) {
+			console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+		})
+		.setCheckBoxClick("1", function(target, args) {
+			console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+		});
+
+	function enable() {
+		document.multiselect('#SQL').setIsEnabled(true);
+	}
+
+	function disable() {
+		document.multiselect('#SQL').setIsEnabled(false);
+	}
+</script>
+
+<script>
+	document.multiselect('#No_SQL')
+		.setCheckBoxClick("checkboxAll", function(target, args) {
+			console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+		})
+		.setCheckBoxClick("1", function(target, args) {
+			console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+		});
+
+	function enable() {
+		document.multiselect('#No_SQL').setIsEnabled(true);
+	}
+
+	function disable() {
+		document.multiselect('#No_SQL').setIsEnabled(false);
+	}
+</script>
+
+<script>
+	document.multiselect('#Languages')
+		.setCheckBoxClick("checkboxAll", function(target, args) {
+			console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+		})
+		.setCheckBoxClick("1", function(target, args) {
+			console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+		});
+
+	function enable() {
+		document.multiselect('#Languages').setIsEnabled(true);
+	}
+
+	function disable() {
+		document.multiselect('#Languages').setIsEnabled(false);
+	}
+</script>
+
+<script>
+	document.multiselect('#Big_Data_Ecosystem')
+		.setCheckBoxClick("checkboxAll", function(target, args) {
+			console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+		})
+		.setCheckBoxClick("1", function(target, args) {
+			console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+		});
+
+	function enable() {
+		document.multiselect('#Big_Data_Ecosystem').setIsEnabled(true);
+	}
+
+	function disable() {
+		document.multiselect('#Big_Data_Ecosystem').setIsEnabled(false);
+	}
+</script>
+{% endblock %}
